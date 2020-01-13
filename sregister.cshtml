@@ -1,0 +1,98 @@
+﻿@model E_Project.Models.TBL_STUDENT
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>sregister</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-image: url('../../Content/img/data-science-twitter.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    @if (ViewBag.msg != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error!</strong> @ViewBag.msg
+        </div>
+
+
+    }
+
+
+    <h2 style="text-align:center;background-color:#ffffff;font-family:'Adobe Garamond Pro';margin:0 auto">Student Registration</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8  col-md-8 col-sm-8">
+
+
+                <div class="container" style="width:40%">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    @using (@Html.BeginForm("sregister", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="form-group">
+                            <label for="email" style="color:white">Email:</label>
+                            @*<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">*@
+                            @Html.TextBoxFor(x => x.S_NAME, htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd" style="color:white">Password:</label>
+                            @Html.PasswordFor(x => x.S_PASSWORD, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd" style="color:white">Image:</label>
+                            <input type="file" class="form-control" id="imgfile" name="imgfile" />
+                        </div>
+
+                        <input type="submit" value="Register Now!" class="btn btn-warning btn-block" />
+
+
+                    }
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-4  col-md-4 col-sm-4">
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

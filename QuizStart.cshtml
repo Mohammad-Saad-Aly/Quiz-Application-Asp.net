@@ -1,0 +1,105 @@
+﻿@model IEnumerable<E_Project.Models.TBL_QUESTIONS>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>QuizStart</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        p {
+            text-align: center;
+            font-size: 60px;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 style="text-align:center">Online Aptitude Test</h1>
+    </div>
+
+    <p id="demo"></p>
+
+    <script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var minutes = Math.floor((distance % (1000 * 30 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+    </script>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        foreach (var item in Model)
+        {
+
+
+            <div class="container" style="margin:0 auto;margin-top:70px;">
+
+                <div class="row">
+                    <h1>@Html.DisplayFor(modelItem => item.Q_TEXT)</h1>
+                </div>
+
+                <div class="row">
+                    <h3>@Html.RadioButtonFor(modelItem => item.OPA, item.QUESTION_ID) @item.OPA </h3>
+                </div>
+                <div class="row">
+                    <h3>@Html.RadioButtonFor(modelItem => item.OPB, item.QUESTION_ID) @item.OPB </h3>
+                </div>
+                <div class="row">
+                    <h3>@Html.RadioButtonFor(modelItem => item.OPC, item.QUESTION_ID) @item.OPC </h3>
+                </div>
+                <div class="row">
+                    <h3>@Html.RadioButtonFor(modelItem => item.OPD, item.QUESTION_ID) @item.OPD </h3>
+                </div>
+
+
+
+            </div>
+
+        }
+        <br />
+        <div class="rown">
+            <input type="submit" value="SUBMIT" class="btn btn-success center-block" />
+        </div>
+        <br />
+        <br />
+    }
+
+</body>
+</html>
+
+
+  

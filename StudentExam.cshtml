@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentExam</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    
+    <style>
+        body{
+            background-image:url('../../Content/img/Light-sky-stars-background.jpg');
+            background-size:cover;
+        }
+    </style>
+
+</head>
+<body>
+    @if (@ViewBag.error != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error:</strong>@ViewBag.error
+        </div>
+    }
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <br />
+            <br />
+            <h1 style="text-align:center; color:#ffffff; font-family:Algerian">Enter Room Number</h1>
+            <br />
+
+            <input type="text" id="room" name="room" placeholder="Room Number" class="form-control" />
+            <br />
+            <br />
+            <div>
+                <input type="submit" value="SUBMIT" class="btn btn-info center-block" />
+            </div>
+
+
+        </div>
+    }
+
+</body>
+</html>
